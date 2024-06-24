@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git 명령어 시각화</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Git 명령어 시각화</h1>
+    </header>
+    <main>
+        <div id="command-panel">
+            <button id="btn-init">git init</button>
+            <button id="btn-add">git add .</button>
+            <button id="btn-commit">git commit</button>
+            <button id="btn-push">git push</button>
+            <button id="btn-status">git status</button>
+            <button id="btn-log">git log</button>
+            <button id="btn-create-file">파일 생성</button>
+        </div>
+        <div id="input-panel">
+            <input type="text" id="commit-message" placeholder="커밋 메시지 입력">
+            <input type="text" id="file-name" placeholder="생성할 파일 이름">
+        </div>
+        <div id="visualization-area">
+            <!-- D3.js로 시각화될 영역 -->
+        </div>
+        <div id="output-panel">
+            <h3>명령어 출력</h3>
+            <pre id="command-output"></pre>
+        </div>
+    </main>
+    <script src="js/gitCommands.js"></script>
+    <script src="js/visualizer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
