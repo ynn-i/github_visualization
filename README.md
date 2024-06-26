@@ -1,6 +1,10 @@
 # github_visualization
 깃헙을 시각화로 배울 수 있는 오픈소스 프로젝트
 
+## 참고 프로젝트
+* [learngitbranching](https://learngitbranching.js.org/?locale=ko)
+* [Git Command Explorer](https://git.gaozih.com/)
+
 ## 오픈소스 목적
 깃헙 프로세스를 시각화 하여 보다 쉽게 GitHub을 이해하고 활용할 수 있도록 돕는 프로젝트입니다. 기초 명령어만 지원하며 고급 명령어를 지원하지 않습니다.
 
