@@ -1,0 +1,14 @@
+{
+    "commands": [
+        {
+        "name": "add",
+        "syntax": "git add <파일명>",
+        "description": "변경사항을 스테이징 영역에 추가합니다."
+        },
+        {
+        "name": "commit",
+        "syntax": "git commit -m \"메시지\"",
+        "description": "스테이징된 변경사항을 저장소에 기록합니다."
+        }
+    ]
+}
