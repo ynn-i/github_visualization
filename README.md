@@ -39,7 +39,7 @@
     2. UI 디자인 구현
 
 ### 명령어 개발팀
-* 팀원: 김현수, 정성훈, 이서림, 김민서, 이성재, 황수범
+* 팀원: 김민서, 김현수, 이서림, 이성재, 정성훈, 홍성원, 황수범 
 * 과업:
     3. Working Directory, Staging Area, Local Repository, Remote Repository의 개념을 시각화
     4. clone 명령어 구현
