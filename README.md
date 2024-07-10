@@ -35,23 +35,24 @@
 ### 디자인팀
 * 팀원 : 진승현, 황수범, 이진희
 * 과업:
-    1. UI 디자인
-    2. UI 디자인 구현
+    * `1.` UI 디자인
+    * `2.` UI 디자인 구현
 
 ### 명령어 개발팀
 * 팀원: 김민서, 김현수, 이서림, 이성재, 정성훈, 홍성원, 황수범 
 * 과업:
-    3. Working Directory, Staging Area, Local Repository, Remote Repository의 개념을 시각화
-    4. clone 명령어 구현
-    5. push, pull 명령어 구현(지금은 push 되었습니다만 뜹니다. Remote Repository에 push되도록 구현)
-    6. branch, checkout 명령어 구현
-    7. amend 명령어 구현
+    * `3.` Working Directory, Staging Area, Local Repository, Remote Repository의 개념을 시각화
+    * `4.` clone 명령어 구현
+    * `5.` push, pull 명령어 구현(지금은 push 되었습니다만 뜹니다. Remote Repository에 push되도록 구현)
+    * `6.` branch, checkout 명령어 구현
+    * `7.` (선택 구현)amend, merge 명령어 구현
+    * `8.` D3 시각화 구현
 
 ### 기능구현 개발팀
 * 팀원: 지명진, 정성훈, 박재영, 홍성원
 * 과업:
-    8. CLI 구현
-    9. 실행했던 명령어 누적 구현, 다운로드 구현
+    * `9.` CLI 구현
+    * `10.` 실행했던 명령어 누적 구현, 다운로드 구현
 
 ### 문서화 및 튜토리얼 개발팀
 * 팀원: 장유주, 지명진, 이성재, 이민서, 강지혜, 윤혜림, 이다빈
