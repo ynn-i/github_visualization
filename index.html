@@ -1,174 +1,164 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lookgit</title>
-    <meta name="description" content="git을 시각화하여 확인하실 수 있습니다.">
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="https://d3js.org/d3.v7.min.js" async></script>
-  </head>
-  <body>
-    <header>
-      <a href="">
-        <!-- 로고 영역 -->
-        <img src="./src/logo.svg" alt="logo" />
-        <h1>Lookgit</h1>
-      </a>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lookgit</title>
+        <meta name="description" content="git을 시각화하여 확인하실 수 있습니다." />
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="https://d3js.org/d3.v7.min.js" async></script>
+    </head>
+    <body>
+        <header>
+            <a href="">
+                <!-- 로고 영역 -->
+                <img src="./src/logo.svg" alt="logo" />
+                <h1>Lookgit</h1>
+            </a>
 
-      <nav>
-        <ul>
-          <!-- 페이지 탭 영역 -->
-          <li>Git 시각화 실습</li>
-          <li>기록 및 명령어 사전</li>
-        </ul>
+            <nav>
+                <ul>
+                    <!-- 페이지 탭 영역 -->
+                    <li>Git 시각화 실습</li>
+                    <li>기록 및 명령어 사전</li>
+                </ul>
 
-        <div>
-          <!-- 언어 선택 영역 -->
-          <a href="">KOR</a>
-          <div></div>
-          <a href="">ENG</a>
-        </div>
-      </nav>
-    </header>
+                <div>
+                    <!-- 언어 선택 영역 -->
+                    <a href="">KOR</a>
+                    <div></div>
+                    <a href="">ENG</a>
+                </div>
+            </nav>
+        </header>
 
-    <main>
-      <!-- Git 시각화 실습 -->
-      <div>
-        <ul>
-          <!-- 연습 모드 선택 영역 -->
-          <li><button id="btn-practice">Practice</button></li>
-          <li><button id="btn-cli">CLI</button></li>
-        </ul>
+        <main>
+            <!-- Git 시각화 실습 -->
+            <div>
+                <div class="segment-control">
+                    <!-- 연습 모드 선택 영역 -->
+                    <input type="radio" id="btn-practice" name="segment" checked />
+                    <label for="Practice">Practice</label>
+                    <input type="radio" id="btn-cli" name="segment" />
+                    <label for="CLI">CLI</label>
+                </div>
 
-        <div id="command-panel-with-text">
-          <!-- 텍스트와 함께 사용되는 버튼 영역 -->
-          <input
-            type="text"
-            id="commend-text"
-            placeholder="파일이나 브랜치명 or 커밋 메세지 입력"
-          />
-          <div>
-            <button id="btn-create-file">파일 생성</button>
-            <button id="btn-commit">git commit</button>
-            <button id="btn-branch">git branch</button>
-            <button id="btn-clone">git clone URL</button>
-            <button id="btn-checkout">git checkout</button>
-            <button id="btn-amend">git amend</button>
-          </div>
-        </div>
+                <div id="command-panel-with-text">
+                    <!-- 텍스트와 함께 사용되는 버튼 영역 -->
+                    <input type="text" id="commend-text" placeholder="파일이나 브랜치명 or 커밋 메세지 입력" />
+                    <div>
+                        <button id="btn-create-file" class="btn--gray">파일 생성</button>
+                        <button id="btn-commit" class="btn--gray">git commit</button>
+                        <button id="btn-branch" class="btn--gray">git branch</button>
+                        <button id="btn-clone" class="btn--gray">git clone URL</button>
+                        <button id="btn-checkout" class="btn--gray">git checkout</button>
+                        <button id="btn-amend" class="btn--gray">git amend</button>
+                    </div>
+                </div>
 
-        <div id="command-panel-without-text">
-          <!-- 텍스트와 함께 사용되지 않는 버튼 영역 -->
-          <button id="btn-init">git init</button>
-          <button id="btn-pull">git pull</button>
-          <button id="btn-add">git add .</button>
-          <button id="btn-status">git status</button>
-          <button id="btn-log">git log</button>
-          <button id="btn-push">git push</button>
-        </div>
+                <div id="command-panel-without-text">
+                    <!-- 텍스트와 함께 사용되지 않는 버튼 영역 -->
+                    <button id="btn-init" class="btn--ghost">git init</button>
+                    <button id="btn-pull" class="btn--ghost">git pull</button>
+                    <button id="btn-add" class="btn--ghost">git add .</button>
+                    <button id="btn-status" class="btn--ghost">git status</button>
+                    <button id="btn-log" class="btn--ghost">git log</button>
+                    <button id="btn-push" class="btn--ghost">git push</button>
+                </div>
 
-        <div id="cli-panel">
-          <!-- CLI 텍스트 작성 영역 -->
-          <!-- 현재는 textarea로 작성해 두었으나, 추후 어떻게 개발할 지 기능구현팀에서의 논의가 필요합니다. -->
-          <textarea name="cli-text-field" id="cli-text-field"></textarea>
-        </div>
+                <div id="cli-panel">
+                    <!-- CLI 텍스트 작성 영역 -->
+                    <!-- 현재는 textarea로 작성해 두었으나, 추후 어떻게 개발할 지 기능구현팀에서의 논의가 필요합니다. -->
+                    <textarea name="cli-text-field" id="cli-text-field"></textarea>
+                </div>
 
-        <button id="btn-tutorial">
-          <!-- 튜토리얼 버튼 -->
-          <img src="./src/tutorial.svg" alt="tutorial icon" />
-        </button>
-      </div>
+                <button id="btn-tutorial">
+                    <!-- 튜토리얼 버튼 -->
+                    <img src="./src/tutorial.svg" alt="tutorial icon" />
+                </button>
+            </div>
 
-      <div>
-        <div id="visualization-area">
-          <!-- D3.js로 시각화될 영역 -->
-          <div>
-            <h2>Current Branch : <span id="branch-now"></span></h2>
-            <button><img src="" alt="refresh icon" />Refresh</button>
-          </div>
-        </div>
+            <div>
+                <div id="visualization-area">
+                    <!-- D3.js로 시각화될 영역 -->
+                    <div>
+                        <h2>Current Branch : <span id="branch-now"></span></h2>
+                        <button><img src="" alt="refresh icon" />Refresh</button>
+                    </div>
+                </div>
 
-        <div>
-          <!-- 상태표시 영역 -->
-          <ul>
-            <li>
-              예시 텍스트입니다
-              <p>file name (추가한 파일이 표시됩니다)</p>
-            </li>
-            <li>
-              예시 텍스트입니다
-              <p>file name (추가한 파일이 표시됩니다)</p>
-            </li>
-          </ul>
-        </div>
+                <div>
+                    <!-- 상태표시 영역 -->
+                    <ul>
+                        <li>
+                            예시 텍스트입니다
+                            <p>file name (추가한 파일이 표시됩니다)</p>
+                        </li>
+                        <li>
+                            예시 텍스트입니다
+                            <p>file name (추가한 파일이 표시됩니다)</p>
+                        </li>
+                    </ul>
+                </div>
 
-        <div id="output-panel">
-          <!-- 명령어 출력 영역 -->
-          <h3>명령어 출력</h3>
-          <div>
-            <pre id="command-output">
-              <span></span>
+                <div id="output-panel">
+                    <!-- 명령어 출력 영역 -->
+                    <h3>명령어 출력</h3>
+                    <div>
+                        <pre id="command-output" class="command--default">
+              <span>명령어 출력</span>
             </pre>
-          </div>
-        </div>
-      </div>
+                    </div>
+                </div>
+            </div>
 
-      <section style="display: none">
-        <!-- 코치마크 영역 -->
-        <!-- css 작업 시 각 말풍선(aside태그)에 :after 가상 선택자를 사용하여 작업 바랍니다. -->
-        <aside>
-          <header>1</header>
-          <div>
-            <h3>연습단계 설정</h3>
-            <p>
-              Git Vision에서는 버튼과 CLI 두 단계로 학습 단계를 설정할 수
-              있습니다!
-            </p>
-          </div>
-        </aside>
+            <section style="display: none">
+                <!-- 코치마크 영역 -->
+                <!-- css 작업 시 각 말풍선(aside태그)에 :after 가상 선택자를 사용하여 작업 바랍니다. -->
+                <aside>
+                    <header>1</header>
+                    <div>
+                        <h3>연습단계 설정</h3>
+                        <p>Git Vision에서는 버튼과 CLI 두 단계로 학습 단계를 설정할 수 있습니다!</p>
+                    </div>
+                </aside>
 
-        <aside>
-          <header>2</header>
-          <div>
-            <h3>연습단계 설정</h3>
-            <p>
-              Git Vision에서는 버튼과 CLI 두 단계로 학습 단계를 설정할 수
-              있습니다!
-            </p>
-          </div>
-        </aside>
-      </section>
-    </main>
+                <aside>
+                    <header>2</header>
+                    <div>
+                        <h3>연습단계 설정</h3>
+                        <p>Git Vision에서는 버튼과 CLI 두 단계로 학습 단계를 설정할 수 있습니다!</p>
+                    </div>
+                </aside>
+            </section>
+        </main>
 
-    <main hidden>
-      <!-- 기록 및 명령어 사전 -->
-      <!-- hidden으로 처리되어 있습니다. document.getElementById("").hidden = true; 로 js 작성을 권장드립니다. -->
-      <div>
-        <!-- 명령어 사전 -->
-        <ul>
-          <li>
-            예시 텍스트입니다
-            <p>깃 명령어들의 설명이 표시됩니다</p>
-          </li>
-          <li>
-            예시 텍스트입니다
-            <p>깃 명령어들의 설명이 표시됩니다</p>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <!-- 히스토리 -->
-        <h2>History</h2>
-        <p>json 파일 내용들이 들어갑니다.</p>
-        <button id="btn-download">
-          <img src="" alt="download icon" />Download history
-        </button>
-      </div>
-    </main>
+        <main hidden>
+            <!-- 기록 및 명령어 사전 -->
+            <!-- hidden으로 처리되어 있습니다. document.getElementById("").hidden = true; 로 js 작성을 권장드립니다. -->
+            <div>
+                <!-- 명령어 사전 -->
+                <ul>
+                    <li>
+                        예시 텍스트입니다
+                        <p>깃 명령어들의 설명이 표시됩니다</p>
+                    </li>
+                    <li>
+                        예시 텍스트입니다
+                        <p>깃 명령어들의 설명이 표시됩니다</p>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <!-- 히스토리 -->
+                <h2>History</h2>
+                <p>json 파일 내용들이 들어갑니다.</p>
+                <button id="btn-download"><img src="" alt="download icon" />Download history</button>
+            </div>
+        </main>
 
-    <script src="js/gitCommands.js"></script>
-    <script src="js/visualizer.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+        <script src="js/gitCommands.js"></script>
+        <script src="js/visualizer.js"></script>
+        <script src="js/main.js"></script>
+    </body>
 </html>
