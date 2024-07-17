@@ -24,41 +24,124 @@ h1 {
     margin-bottom: 20px;
 }
 
-button {
-    padding: 10px 15px;
-    font-size: 14px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+/* segment */
+.segment-control input[type='radio'] {
+    display: none;
 }
-
-button:hover {
-    background-color: #2980b9;
-}
-
-#btn-create-file {
-    background-color: #2ecc71;
-}
-
-#btn-create-file:hover {
-    background-color: #27ae60;
-}
-
-#input-panel {
+.segment-control {
     display: flex;
+    align-items: center;
     gap: 10px;
-    margin-bottom: 20px;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #f0f2f4;
+}
+.segment-control label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    cursor: pointer;
+    flex: 1;
+}
+.segment-control input[type='radio']:checked + label {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
 }
 
-input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
+/* input */
+input[type='text'] {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #222;
+    border: 1px solid #919eab;
+    border-radius: 6px;
+    box-sizing: border-box;
+    outline: none;
+}
+input[type='text']::placeholder {
+    color: #637381;
+}
+input[type='text']:active,
+input[type='text']:focus {
+    border: 1px solid #222;
+}
+
+/* botton */
+button {
+    font-weight: 400;
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    background-color: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.btn--black {
+    background-color: #222;
+    color: #fff;
+    padding: 16px 24px;
+    position: relative;
+    padding-left: 48px;
+    box-sizing: border-box;
+}
+.btn--black::before {
+    content: '';
+    background: url(./src/down.svg) no-repeat center;
+    background-size: 16px 16px;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.btn--black:hover {
+    background-color: #333;
+}
+.btn--gray {
+    background-color: #637381;
+    color: #fff;
+}
+.btn--gray:hover {
+    background-color: #53606b;
+}
+.btn--ghost {
+    border: 1px solid #d3d7d9;
+    color: #222;
+}
+.btn--ghost:hover {
+    background-color: #e4e5e8;
+}
+.btn--small {
+    background-color: #f0f2f4;
+    color: #222;
+    padding: 8px 12px;
+    font-weight: 300;
+    position: relative;
+    padding-left: 36px;
+    box-sizing: border-box;
+}
+.btn--small::before {
+    content: '';
+    background: url(./src/reset.svg) no-repeat center;
+    background-size: 16px 16px;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.btn--small:hover {
+    background-color: #e4e5e8;
 }
 
 #visualization-area {
@@ -78,20 +161,72 @@ input[type="text"] {
 }
 
 #command-output {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
+    display: flex;
+    max-height: 160px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    overflow-y: scroll;
+    padding: 20px 20px 20px 48px;
+    box-sizing: border-box;
+    border-radius: 8px;
     white-space: pre-wrap;
     word-break: break-all;
+    position: relative;
+}
+.command--default {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+.command--default::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: #637381;
+    border-radius: 6px;
+    position: absolute;
+    top: 27px;
+    left: 27px;
+}
+.command--valid {
+    border: 1px solid #06bf66;
+    background-color: #f5fdf9;
+    color: #06bf66;
+}
+.command--valid::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: #06bf66;
+    border-radius: 6px;
+    position: absolute;
+    top: 27px;
+    left: 27px;
+}
+.command--error {
+    border: 1px solid #f74e27;
+    background-color: #fff8f7;
+    color: #f74e27;
+}
+.command--error::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: #f74e27;
+    border-radius: 6px;
+    position: absolute;
+    top: 27px;
+    left: 27px;
 }
 
 @media (max-width: 768px) {
-    #command-panel, #input-panel {
+    #command-panel,
+    #input-panel {
         flex-direction: column;
     }
 
-    button, input[type="text"] {
+    button,
+    input[type='text'] {
         width: 100%;
     }
 }
